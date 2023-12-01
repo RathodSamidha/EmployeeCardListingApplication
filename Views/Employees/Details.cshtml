@@ -1,0 +1,57 @@
+﻿@model EmployeeCardListingApplication.Models.Employee
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div class="card">
+    <div>
+        <div class="card-header">
+            <h3 class="text-uppercase">Employee Details</h3>
+        </div>
+        <div class="card-body">
+                <dl class="row">
+                    <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+                    <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.Designation)
+                    </dt>
+                    <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.Designation)
+                    </dd>
+                    <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.Department)
+                    </dt>
+                    <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.Department)
+                    </dd>
+                    <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </dt>
+                    <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.Phone)
+                    </dd>
+                    <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.ProfilePicture)
+                    </dt>
+                    <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.ProfilePicture)
+                    </dd>
+                    <dd class="col-sm-10">
+                             <img src="@Filelocation.RetriveFileFromFolder@Model.ProfilePicture" class="img-thumbnail" height="100" width="100" asp-append-version="true" />
+                    </dd>
+                </dl>
+         </div>
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model.EmployeeID" class="btn btn-sm btn-info rounded-0"><i class="fa fa-pencil-alt"></i> Edit</a>
+                <a asp-action="Delete" asp-route-id="@Model.EmployeeID" class="btn btn-sm btn-danger rounded-0"><i class="fa fa-trash-alt"></i> Delete</a>
+                <a asp-action="Index" class="btn btn-sm btn-primary rounded-0"><i class="fas fa-fast-backward"></i> Back to List</a>
+            </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EmployeeCardListingApplication.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employee Records";
+}
+
+<h3 class="text-center text-uppercase">list of employee</h3>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary rounded-0"><i class="fa fa-plus-circle"></i> Add New</a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr class="info">  
+            <th>@Html.DisplayNameFor(model => model.ProfilePicture)</th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Department)</th>
+            <th>@Html.DisplayNameFor(model => model.Designation)</th>
+            <th>@Html.DisplayNameFor(model => model.Phone)</th>            
+            <th>Action(s)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.EmployeeID">
+                        <img src="@Filelocation.RetriveFileFromFolder@item.ProfilePicture" class="img-thumbnail" height="100" width="100" asp-append-version="true" /> 
+                    </a>
+                </td>
+                <td>@item.Name</td>
+                <td>@item.Department</td>
+                <td>@item.Designation</td>
+                <td>@item.Phone</td>               
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EmployeeID" class="btn btn-sm btn-info rounded-0"><i class="fa fa-pencil-alt"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.EmployeeID" class="btn btn-sm btn-danger rounded-0"><i class="fa fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+ 
