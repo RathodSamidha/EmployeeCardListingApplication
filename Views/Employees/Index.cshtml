@@ -9,6 +9,14 @@
 <p>
     <a asp-action="Create" class="btn btn-primary rounded-0"><i class="fa fa-plus-circle"></i> Add New</a>
 </p>
+ <div class="p-0 justify-content-end" >
+     <form  asp-action="Index">
+         <span class="btn-group" style="width:100%;">            
+             <input id="txtSearch" name="Searchstring" class="form-control" type="text" placeholder="Search key" aria-label="Search">
+             <input id="btnSearch" class="btn btn-primary rounded-0" type="submit" value="Refresh" />
+         </span>
+     </form>
+ </div>
 <table class="table table-bordered table-striped">
     <thead>
         <tr class="info">  
@@ -41,5 +49,20 @@
         }
     </tbody>
 </table>
+@section Scripts 
+ {
+    <script>
+
+        $(document).ready(function () {
+            $('#txtSearch').keyup(function () {
+                $('#btnSearch').click();
+            });
+        });
+                       
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+ }
 
  
