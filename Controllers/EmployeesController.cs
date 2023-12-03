@@ -27,10 +27,22 @@ namespace EmployeeCardListingApplication.Controllers
             _environment = environment;
         }
 
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Employees.ToListAsync());
-        }
+          public IActionResult Index(String Searchstring = "")
+              {
+                  List<Employee> employees;
+            
+                  if (Searchstring != "" && Searchstring != null)
+                  {
+                      employees = _context.Employees
+                          .Where(p => p.Name.Contains(Searchstring))
+                          .ToList();
+                  }
+                  else { 
+                      employees = _context.Employees.ToList();
+                  }
+                  return View(employees);
+            
+              }
 
         public async Task<IActionResult> Details(int? id)
         {
